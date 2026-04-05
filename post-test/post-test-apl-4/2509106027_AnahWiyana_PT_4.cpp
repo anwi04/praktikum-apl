@@ -44,10 +44,11 @@ int main(){
         cout << "========================================" << endl;
         cout << "1. Lakukan Pemesanan" << endl;
         cout << "2. Lihat Data Pesanan" << endl;
-        cout << "3. Ubah Data Pesanan" << endl;
-        cout << "4. Hapus Pesanan" << endl;
-        cout << "5. Lihat Total Pesanan" << endl;
-        cout << "6. Keluar" << endl;
+        cout << "3. Lihat Pesanan Berdasarkan Grup" << endl;
+        cout << "4. Ubah Data Pesanan" << endl;
+        cout << "5. Hapus Pesanan" << endl;
+        cout << "6. Lihat Total Pesanan" << endl;
+        cout << "7. Keluar" << endl;
         cout << "Pilih Menu : ";
         cin >> pilihan;
         cin.ignore();
@@ -62,20 +63,27 @@ int main(){
             lihatPesanan(data, jumlahdata);
             break;
 
-        case 3:
+        case 3:{
+            string grup;
+            cout << "Masukan Nama Grup: ";
+            getline(cin, grup);
+            lihatPesanan(data, jumlahdata, grup);
+            break;
+        }
+        case 4:
             ubahPesanan(data, jumlahdata);
             break;
-
-        case 4:
+   
+        case 5:
             hapusPesanan(data, &jumlahdata);
             break;
 
-        case 5:
+        case 6:
             cout << "Total seluruh pesanan album : "
                  << totalPesanan(data, jumlahdata) << endl;
             break;
 
-        case 6:
+        case 7:
             cout << "Program selesai." << endl;
             break;
 
@@ -83,7 +91,7 @@ int main(){
             cout << "Pilihan tidak tersedia!" << endl;
         }
 
-    }while(pilihan != 6);
+    }while(pilihan != 7);
 }
 
 bool login(User user){
@@ -113,6 +121,11 @@ bool login(User user){
 }
 
 void tambahPesanan(Album *data, int *jumlahdata){
+
+    if(*jumlahdata >= 100){
+        cout << "Data sudah penuh! Tidak bisa menambah pesanan lagi." << endl;
+        return;
+    }
 
     cout << "Nama Pembeli : ";
     getline(cin, data[*jumlahdata].nama_pembeli);
