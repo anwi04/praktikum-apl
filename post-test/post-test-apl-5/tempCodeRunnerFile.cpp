@@ -1,0 +1,10 @@
+bool login(User user);
+void tambahPesanan(Album *data, int *jumlahdata);
+void lihatPesanan(Album data[], int jumlahdata);
+void lihatPesanan(Album data[], int jumlahdata, string grup);
+void ubahPesanan(Album data[], int jumlahdata);
+void hapusPesanan(Album *data, int *jumlahdata);
+int totalPesanan(Album data[], int n);
+void bubbleSortGrup(Album data[], int n);
+void selectionSortJumlah(Album data[], int n);
+void insertionSortAlbum(Album data[], int n);
